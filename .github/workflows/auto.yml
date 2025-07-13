@@ -1,0 +1,29 @@
+name: Create Instagram Account
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script
+        run: npm start
+
+      - name: Upload CSV
+        uses: actions/upload-artifact@v3
+        with:
+          name: accounts
+          path: accounts.cs
