@@ -8,22 +8,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run script
-        run: npm start
+      - name: Run Instagram Creator
+        run: node index.js
 
-      - name: Upload CSV
-        uses: actions/upload-artifact@v3
+      - name: Upload Result
+        uses: actions/upload-artifact@v4   # ✅ Fixed here
         with:
           name: accounts
-          path: accounts.cs
+          path: accounts.csv
